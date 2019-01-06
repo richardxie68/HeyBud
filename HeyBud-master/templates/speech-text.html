@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HeyBud Speech/Text Converter</title>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.1/css/font-awesome.min.css" >
+        <link rel="stylesheet" type ="text/css" href="resources/speech-text-style.css">
+
+    </head>
+    <body>
+        <section class = "background">
+        {{login_dict['header']}}
+        <h2 align="center">Speech to Text Converter</h2>
+
+        <section class = "row">
+            <form class= "save-button" method = 'post'>
+                <input type="text" readonly="readonly" name="note" id="result" value=""></input>
+                <button id = "save" >Save Note</button>
+            </form>
+                <section class = "main-buttons">
+                    <button onclick="startConverting();"><i class="fa fa-microphone"></i></button>
+                    <a class="btn btn-full" href="/">Home Page</a>
+                </section>
+            <!-- </form> -->
+        </section>
+
+        <section class = "row">
+        {% for note in notes_dict['notes'] %}
+        <!-- <div>{{bookmark}}</div> -->
+                    <li class="notes">{{ note }}</li>
+                        <form method="post">
+                            <input value="delete" type="hidden" name="note" readonly="true">
+                            <input value="{{ note }}" type="hidden" name="to_be_deleted" readonly="true">
+                            <button class="delete-button">-</button>
+                        </form>
+        {% endfor %}
+        </section>
+    </section>
+
+
+        <script type="text/javascript">
+
+            var r = document.getElementById('result');
+
+            function startConverting () {
+                if('webkitSpeechRecognition' in window){
+                    var speechRecognizer = new webkitSpeechRecognition();
+                    speechRecognizer.continuous = true;
+                    speechRecognizer.interimResults = true;
+                    speechRecognizer.lang = 'en-IN';
+                    speechRecognizer.start();
+
+                    var finalTranscripts = '';
+
+                    speechRecognizer.onresult = function(event){
+                        var interimTranscripts = '';
+                        for(var i = event.resultIndex; i < event.results.length; i++){
+                            var transcript = event.results[i][0].transcript;
+                            transcript.replace("\n", "<br>");
+                            if(event.results[i].isFinal){
+                                finalTranscripts += transcript;
+                            }else{
+                                interimTranscripts += transcript;
+                            }
+                        }
+                        document.getElementById("result").value = finalTranscripts + interimTranscripts;
+                        // r.innerHTML = finalTranscripts + '<span style="color:#999">' + interimTranscripts + '</span>';
+                    };
+                    speechRecognizer.onerror = function (event) {
+                    };
+                }else{
+                    r.innerHTML = 'Your browser is not supported. If google chrome, please upgrade!';
+                }
+            }
+
+
+
+        </script>
+    </body>
+</html>
+
+

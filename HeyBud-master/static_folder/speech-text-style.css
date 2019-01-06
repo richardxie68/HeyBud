@@ -1,0 +1,145 @@
+body{
+    font-family: verdana;
+    color: white;
+}
+#result{
+    height: 200px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0 0 10px 0 #bbb;
+    margin-bottom: 30px;
+    font-size: 14px;
+    line-height: 25px;
+}
+
+.background {
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url("http://cdn1.smartvectorpics.com/images/imagesbase/fpik/speech-bubbles-background-paper-cutout-effect_23-2147486304.jpg");
+    background-size: cover;
+    height: 100vh;
+background-position: center;
+background-attachment: fixed;
+
+}
+
+.main-buttons {
+    text-align: center;
+
+}
+
+button{
+    display: inline-block;
+    font-size: 50px;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 30px;
+}
+
+input {
+    border: 1px solid black;
+    margin: 0 15%;
+    display: inline-block;
+    text-align: center;
+    width: 800px;
+    height: 500px;
+}
+
+.notes {
+    display: block;
+    list-style: none;
+    text-decoration: none;
+    float: left;
+    text-align: center;
+    margin-left: 20%;
+}
+
+.delete-button {
+    display: inline-block;
+    border-radius: 0;
+    font-size: 15px;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    padding: 0;
+    margin-left: 20px;
+}
+
+#save {
+    display: inline-block;
+    font-size: 20px;
+    border-radius: 50%;
+    float: left;
+    margin-left: 30%;
+
+}
+
+
+
+/* ------------------------------------------------------------------------------*/
+/* ------------------------Reusable Components-----------------------------------*/
+/* ------------------------------------------------------------------------------*/
+
+.row {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+h1, h2, h3 {
+    font-weight: 300; /*h1 usually comes with bold formating so need to set font weight to what we want*/
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+h2 {
+    margin: 100px;
+    font-size: 190%;
+    word-spacing: 2px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h2:after { /*use css to put content on page, this pseudo class literally puts stuff after the h2*/
+    display: block;
+    height: 2px;
+    background-color: #e67e22; /* background color and not color bc color is for text*/
+    content: " "; /* need to specify content, in this case we dont want any words to appear*/
+    width: 100px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+
+/* BUTTTTTTOOOOONS */
+
+.btn:link,
+.btn:visited{
+    display: inline-block;
+    padding: 10px 30px;
+    font-weight: 300;
+    text-decoration: none;
+    border-radius: 200px;
+    color: white;
+    transition: background-color 0.2s, border 0.2, color 0.2s;
+    margin-left: 40px;
+    width: 100px;
+}
+
+
+.btn-full:link,
+.btn-full:visited{
+    background-color: #f70039;
+    margin-right: 15px;
+}
+
+
+.btn:hover,
+.btn:active{
+    background-color: #ef6d17;
+
+}
+
+.btn-full:hover,
+.btn-full:active{
+    border: 1px solid #ef6d17;
+
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HeyBud Text/Speech Converter</title>
+        <link rel="stylesheet" type ="text/css" href="resources/opposite.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    </head>
+    <body>
+
+
+<div class="row w3-padding-large" id="main">
+    <h1 class="w3-jumbo"><span class="w3-hide-small"></span>Text to Speech Converter</h1>
+    <p>Below is the speech being translated: </p>
+    <p>"Lenses can be converging and diverging. For a real image one can put paper/film there to see it. For a virtual image one cannot put paper there at image spot to see it."</p>
+</div>
+
+<section class = "main-buttons">
+                    <button onclick="convert();">Convert</button>
+                    <a class="btn btn-full" href="/">Home Page</a>
+                </section>
+</body>
+<script>
+    function convert () {
+    if('speechSynthesis' in window){
+    var speech = new SpeechSynthesisUtterance('Lenses can be converging and diverging. For a real image one can put paper/film there to see it. For a virtual image one cannot put paper there at image spot to see it.'
+    );
+    speech.lang = 'en-US';
+    window.speechSynthesis.speak(speech);
+    }
+}
+</script>
+
+</html>
